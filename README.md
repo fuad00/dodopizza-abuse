@@ -2,6 +2,7 @@
 
 ### Получение инфорации о выбранной пиццерии Додо
 
+![vid](https://user-images.githubusercontent.com/26776550/120511162-cf18f580-c3d2-11eb-82e1-2b0b990e4acb.gif)
 
  ## Установка и запуск на Linux
 1. Устанавливаем git и python:
