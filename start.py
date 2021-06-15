@@ -12,7 +12,7 @@ f = open('pizza.json', encoding="utf8")
 data = json.load(f)
 
 # Получаем список городов и загоняем в лист city
-for x in range(0, 584):
+for x in range(0, 585):
     city_tmp.append(data[x]["AddressDetails"]["LocalityName"])
     for i in city_tmp:
         if i not in city:
