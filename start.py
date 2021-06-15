@@ -39,9 +39,11 @@ for x in range(0, 585):
 questions = [inquirer.List('ans', message="Выберите пиццерию", choices=pizzeria_adrress)]
 answers = inquirer.prompt(questions)
 
+# функция parse
 def parse(num):
     print("Выручка с [" + salary_data[num]["period"]["start"] + "] по [" + salary_data[num]["period"]["end"] + "]\n")
-
+    # вывод информации о доходе пиццерии
+    # TODO: better vision (colorize, etc.)
     for history in range(len(salary_data[num]["history"])):
         print("[" + str(salary_data[num]["history"][history]["month"]) + "/" + str(salary_data[num]["history"][history]["year"]) + "]")
         print("Ресторан:  " + str(salary_data[num]["history"][history]["local"]["stationaryRevenue"]) + " руб. (" + str(salary_data[num]["history"][history]["usd"]["stationaryRevenue"]) + "$)")
@@ -49,15 +51,19 @@ def parse(num):
         print("Самовывоз: " + str(salary_data[num]["history"][history]["local"]["pickupRevenue"]) + " руб. (" + str(salary_data[num]["history"][history]["usd"]["pickupRevenue"]) + "$)")
         print("Итог:      " + str(salary_data[num]["history"][history]["local"]["revenue"]) + " руб. (" + str(salary_data[num]["history"][history]["usd"]["revenue"]) + "$)\n")
 
+# функция salary
 def salary(uid):
+    # цикл для поиска, сравнения и определения id пиццерии между файлами из data/
     for num in range(len(salary_data)):
         for y in range(len(pizza_data)):
             if (salary_data[num]["unitId"] == uid) and (pizza_data[y]["Id"] == uid):
                 ask = input("Показать инфорацию о выручке? (Y/n)\n")
                 if (ask == "Y") or (ask == "y"):
+                    # выполение функции с ранее определённым значением 'id' выбранной пиццерии
                     return parse(num)
                     
                 else:
+                    # в случае отказа
                     print("До свидания.")
                     return
 
@@ -68,13 +74,14 @@ for x in range(0, 585):
         print("Выбранный адрес: " + pizza_data[x]["Address"])
         print("Заказы в прямом эфире: https://orderstatusboard.dodois.io/boards?PizzeriaId=" + pizza_data[x]["UUId"])
         
-        # Попытка найти камеру
+        # попытка найти камеру
         try:
             p1 = re.search(r'(?<=open.ivideon.com/embed/v2/\?server\=).*?(?=amp)', pizza_data[x]["WebCameraUrl"])[0]
             p2 = re.findall(r'camera=\d{,}', pizza_data[x]["WebCameraUrl"])[0]
             print("Камера на кухне: https://open.ivideon.com/embed/v2/?server=" + p1 + p2)
         except:
             pass
-            
+        # вывод информации о менеджере
         print("Менеджер: {} ({})".format(str(pizza_data[x]["ManagerPhoneNumber"]), pizza_data[x]["StoreManager"]))
+        # выполение функции с аргументом 'id' выбранной пиццерии
         salary(pizza_data[x]["Id"])
