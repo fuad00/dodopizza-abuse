@@ -22,7 +22,7 @@ for x in range(0, 585):
 city.sort()
 
 # МСК и СПб ставим на первые места в списке
-city[143], city[0] = city[0], city[143]
+city[144], city[0] = city[0], city[144]
 city[207], city[1] = city[1], city[207]
 
 # Интерактивный ввод города
