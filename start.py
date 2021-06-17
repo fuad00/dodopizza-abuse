@@ -50,7 +50,8 @@ def parse(num):
         print("Доставка:  " + str(salary_data[num]["history"][history]["local"]["deliveryRevenue"]) + " руб. (" + str(salary_data[num]["history"][history]["usd"]["deliveryRevenue"]) + "$)")
         print("Самовывоз: " + str(salary_data[num]["history"][history]["local"]["pickupRevenue"]) + " руб. (" + str(salary_data[num]["history"][history]["usd"]["pickupRevenue"]) + "$)")
         print("Итог:      " + str(salary_data[num]["history"][history]["local"]["revenue"]) + " руб. (" + str(salary_data[num]["history"][history]["usd"]["revenue"]) + "$)\n")
-
+    input("Нажмите любую клавишу чтобы закрыть программу.")
+    
 # функция salary
 def salary(uid):
     # цикл для поиска, сравнения и определения id пиццерии между файлами из data/
@@ -64,7 +65,7 @@ def salary(uid):
                     
                 else:
                     # в случае отказа
-                    print("До свидания.")
+                    input("Нажмите любую клавишу чтобы закрыть программу.")
                     return
 
 
