@@ -7,7 +7,7 @@
  ## Установка и запуск на Linux
 1. Устанавливаем git и python:
 
-       apt-get update && apt-get -y install git python3 python3-{dev,pip}
+       apt-get update && apt-get -y install git python3 python3-pip
 
 2. Клонируем репозиторий и устанавливаем зависимости:
 	
